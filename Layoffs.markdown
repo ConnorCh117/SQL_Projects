@@ -1,220 +1,198 @@
-
-
-
-
-
+```Sql
 -- Data Cleaning Project
-
-
 
 -- 1. Remove duplicates 
 -- 2. Standardize the data 
--- 3. Adress null values or blank values 
+-- 3. Address null values or blank values 
 -- 4. Remove any irrelevant columns or rows 
 
-```sql
-select *
-from layoffs;
-```
+SELECT *
+FROM layoffs;
 
--- Removing deplicates
+-- Removing duplicates
 -- Create a new table and input data instead of raw data doing all the cleaning 
 
-create table layoffs_staging 
-like layoffs; 
+CREATE TABLE layoffs_staging 
+LIKE layoffs; 
 
-insert into layoffs_staging
-select *
-from layoffs; 
+INSERT INTO layoffs_staging
+SELECT *
+FROM layoffs; 
 
 -- Check all the duplicate rows
-with duplicate_cte as 
-(select *, 
-row_number () over (
-partition by company, location, industry, total_laid_off, `date`, stage, country, funds_raised_millions) as row_num
-from layoffs_staging
+WITH duplicate_cte AS (
+    SELECT *, 
+           ROW_NUMBER() OVER (
+               PARTITION BY company, location, industry, total_laid_off, `date`, stage, country, funds_raised_millions
+           ) AS row_num
+    FROM layoffs_staging
 )
-select *
-from duplicate_cte
-where row_num > 1; 
+SELECT *
+FROM duplicate_cte
+WHERE row_num > 1; 
 
--- creat a new table to contain data after removing duplicates 
+-- Create a new table to contain data after removing duplicates 
 CREATE TABLE `layoffs_staging2` (
-  `company` text,
-  `location` text,
-  `industry` text,
-  `total_laid_off` bigint DEFAULT NULL,
-  `percentage_laid_off` text,
-  `date` text,
-  `stage` text,
-  `country` text,
-  `funds_raised_millions` int DEFAULT NULL,
-  `row_num` INT 
+    `company` TEXT,
+    `location` TEXT,
+    `industry` TEXT,
+    `total_laid_off` BIGINT DEFAULT NULL,
+    `percentage_laid_off` TEXT,
+    `date` TEXT,
+    `stage` TEXT,
+    `country` TEXT,
+    `funds_raised_millions` INT DEFAULT NULL,
+    `row_num` INT 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+SELECT *
+FROM layoffs_staging2;
 
-select *
-from layoffs_staging2;
+INSERT INTO layoffs_staging2
+SELECT *, 
+       ROW_NUMBER() OVER (
+           PARTITION BY company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions
+       ) AS row_num
+FROM layoffs_staging;
 
-insert into layoffs_staging2
-(select *, 
-row_number () over (
-partition by company, location, industry, total_laid_off, percentage_laid_off, `date`, stage, country, funds_raised_millions) as row_num
-from layoffs_staging
-);
-delete
-from layoffs_staging2
-where row_num > 1 ;
+DELETE
+FROM layoffs_staging2
+WHERE row_num > 1;
 
+-- Standardizing data 
 
--- Standardising data 
+SELECT company, TRIM(company)
+FROM layoffs_staging2;
 
-select company, trim(company)
-from layoffs_staging2;
+UPDATE layoffs_staging2
+SET company = TRIM(company);
 
-update layoffs_staging2
-set company = trim(company);
+SELECT DISTINCT industry 
+FROM layoffs_staging2
+ORDER BY 1;
 
-select distinct industry 
-from layoffs_staging2
-order by 1
-;
-
-select *
-from layoffs_staging2
-where industry like 'crypto%'
-;
-
-update layoffs_staging2 
-set industry = 'crypto'
-where industry like 'crypto%'
-;
-
-select distinct industry 
-from layoffs_staging2;
-
-select distinct country, trim(trailing '.' from country)
-from layoffs_staging2
-order by 1;
-
-update layoffs_staging2
-set country = trim(trailing '.' from country)
-where country like 'United States%'
-;
-
-select `date`
-from layoffs_staging2
-;
-
-update layoffs_staging2
-set `date` = str_to_date(`date`, '%m/%d/%Y');
-
-alter table layoffs_staging2
-modify column `date` date;
-
--- check layoff related colomns with no value
-select *
-from layoffs_staging2
-where total_laid_off is null
-and percentage_laid_off is null
-;
-
-select *
-from layoffs_staging2
-where industry is null 
-or industry = '';
-
--- transform empty data to null value for better standardizing 
-update layoffs_staging2
-set industry = null 
-where industry ='';
-
-select *
-from layoffs_staging2
-where company = 'Airbnb';
-
-update layoffs_staging2
-set industry = null 
-where industry ='';
-
-select *
-from layoffs_staging2 as t1
-join layoffs_staging2 as t2 
-	on t1.company = t2.company and t1.location = t2.location 
-where t1.company = 'Airbnb'
-;
-
-select *
-from layoffs_staging2 as t1
-join layoffs_staging2 as t2 
-	on t1.company = t2.company and t1.location = t2.location 
-where t1.industry is null
-and t2.industry IS NOT NULL;
-
-update layoffs_staging2 as t1
-join layoffs_staging2 as t2
-	on t1.company = t2.company and t1.location = t2.location
-    set t1.industry = t2.industry 
-	where t1.industry is null
-	and t2.industry IS NOT NULL;
-    
-
-select *
-from layoffs_staging2
-where company like 'bally%';
-
--- delete empty data
-select * 
-from layoffs_staging2
-where total_laid_off is null 
-and percentage_laid_off is null;
-
-delete 
-from layoffs_staging2
-where total_laid_off is null 
-and percentage_laid_off is null;
-
--- remove irrelevent colomn
-alter table layoffs_staging2
-drop column row_num;
-
-select * 
-from layoffs_staging2;
-
-
-
--- Exploratory data analysis 
-
--- Find the max laid off in one go
-select max(total_laid_off)
-from layoffs_staging2;
-
--- Find out which company laid off all of their employees
-select *
-from layoffs_staging2
-where percentage_laid_off = 1 
-order by total_laid_off desc;
-
--- Order by funds_raised_millions we can see how big some of these companies were
 SELECT *
 FROM layoffs_staging2
-WHERE  percentage_laid_off = 1
+WHERE industry LIKE 'crypto%';
+
+UPDATE layoffs_staging2 
+SET industry = 'crypto'
+WHERE industry LIKE 'crypto%';
+
+SELECT DISTINCT industry 
+FROM layoffs_staging2;
+
+SELECT DISTINCT country, TRIM(TRAILING '.' FROM country)
+FROM layoffs_staging2
+ORDER BY 1;
+
+UPDATE layoffs_staging2
+SET country = TRIM(TRAILING '.' FROM country)
+WHERE country LIKE 'United States%';
+
+SELECT `date`
+FROM layoffs_staging2;
+
+UPDATE layoffs_staging2
+SET `date` = STR_TO_DATE(`date`, '%m/%d/%Y');
+
+ALTER TABLE layoffs_staging2
+MODIFY COLUMN `date` DATE;
+
+-- Check layoff-related columns with no value
+SELECT *
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL
+AND percentage_laid_off IS NULL;
+
+SELECT *
+FROM layoffs_staging2
+WHERE industry IS NULL 
+OR industry = '';
+
+-- Transform empty data to NULL value for better standardization 
+UPDATE layoffs_staging2
+SET industry = NULL 
+WHERE industry = '';
+
+SELECT *
+FROM layoffs_staging2
+WHERE company = 'Airbnb';
+
+SELECT *
+FROM layoffs_staging2 AS t1
+JOIN layoffs_staging2 AS t2 
+    ON t1.company = t2.company AND t1.location = t2.location 
+WHERE t1.company = 'Airbnb';
+
+SELECT *
+FROM layoffs_staging2 AS t1
+JOIN layoffs_staging2 AS t2 
+    ON t1.company = t2.company AND t1.location = t2.location 
+WHERE t1.industry IS NULL
+AND t2.industry IS NOT NULL;
+
+UPDATE layoffs_staging2 AS t1
+JOIN layoffs_staging2 AS t2
+    ON t1.company = t2.company AND t1.location = t2.location
+SET t1.industry = t2.industry 
+WHERE t1.industry IS NULL
+AND t2.industry IS NOT NULL;
+
+SELECT *
+FROM layoffs_staging2
+WHERE company LIKE 'bally%';
+
+-- Delete empty data
+SELECT * 
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL 
+AND percentage_laid_off IS NULL;
+
+DELETE 
+FROM layoffs_staging2
+WHERE total_laid_off IS NULL 
+AND percentage_laid_off IS NULL;
+
+-- Remove irrelevant column
+ALTER TABLE layoffs_staging2
+DROP COLUMN row_num;
+
+SELECT * 
+FROM layoffs_staging2;
+
+-- Exploratory Data Analysis 
+
+-- Find the max laid-off in one go
+SELECT MAX(total_laid_off)
+FROM layoffs_staging2;
+
+-- Find out which company laid off all of their employees
+SELECT *
+FROM layoffs_staging2
+WHERE percentage_laid_off = 1 
+ORDER BY total_laid_off DESC;
+
+-- Order by funds_raised_millions to see how big some of these companies were
+SELECT *
+FROM layoffs_staging2
+WHERE percentage_laid_off = 1
 ORDER BY funds_raised_millions DESC;
 
--- Companies with the biggest single Layoff
+-- Companies with the biggest single layoff
 SELECT company, total_laid_off
 FROM layoffs_staging2
 ORDER BY 2 DESC
 LIMIT 5;
 
--- Companies with the biggest aggregated Layoff
-select company, sum(total_laid_off)
-from layoffs_staging2
-group by company 
-order by 2 desc
-limit 10;
+-- Companies with the biggest aggregated layoff
+SELECT company, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY company 
+ORDER BY 2 DESC
+LIMIT 10;
 
--- by location
+-- By location
 SELECT location, SUM(total_laid_off)
 FROM layoffs_staging2
 GROUP BY location
@@ -228,17 +206,17 @@ GROUP BY country
 ORDER BY 2 DESC;
 
 -- By industry
-select industry, sum(total_laid_off)
-from layoffs_staging2
-group by industry 
-order by 2 desc;
+SELECT industry, SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY industry 
+ORDER BY 2 DESC;
 
 -- By year 
-select year(`date`), sum(total_laid_off)
-from layoffs_staging2
-where date is not null
-group by year(`date`)
-order by 1 desc;
+SELECT YEAR(`date`), SUM(total_laid_off)
+FROM layoffs_staging2
+WHERE date IS NOT NULL
+GROUP BY YEAR(`date`)
+ORDER BY 1 DESC;
 
 -- By stage 
 SELECT stage, SUM(total_laid_off)
@@ -247,59 +225,43 @@ GROUP BY stage
 ORDER BY 2 DESC;
 
 -- By year and month
-select substring(`date`, 1, 7) as `month`, sum(total_laid_off)
-from layoffs_staging2
-where substring(`date`, 1, 7) is not null 
-group by `month`
-order by 1 asc 
-;
+SELECT SUBSTRING(`date`, 1, 7) AS `month`, SUM(total_laid_off)
+FROM layoffs_staging2
+WHERE SUBSTRING(`date`, 1, 7) IS NOT NULL 
+GROUP BY `month`
+ORDER BY 1 ASC;
 
--- Calculate rolling sum of laid offs over month
-with sum_layoff as 
-(
-select substring(`date`, 1, 7) as `month`, sum(total_laid_off) as total_off
-from layoffs_staging2
-where substring(`date`, 1, 7) is not null 
-group by `month`
-order by 1 asc 
+-- Calculate rolling sum of layoffs over months
+WITH sum_layoff AS (
+    SELECT SUBSTRING(`date`, 1, 7) AS `month`, SUM(total_laid_off) AS total_off
+    FROM layoffs_staging2
+    WHERE SUBSTRING(`date`, 1, 7) IS NOT NULL 
+    GROUP BY `month`
+    ORDER BY 1 ASC 
 )
-select `month`, 
-sum(total_off) over (order by `month` ) as rolling_total 
-from sum_layoff;
+SELECT `month`, 
+       SUM(total_off) OVER (ORDER BY `month`) AS rolling_total 
+FROM sum_layoff;
 
--- which company in which year had the biggest laid off
-select company, year(`date`), sum(total_laid_off)
-from layoffs_staging2
-group by company, year(`date`)
-order by 3 desc;
+-- Which company in which year had the biggest layoffs?
+SELECT company, YEAR(`date`), SUM(total_laid_off)
+FROM layoffs_staging2
+GROUP BY company, YEAR(`date`)
+ORDER BY 3 DESC;
 
--- which company had the biggest laid off within each year
-with company_years as 
-(
-select company, year(`date`) as years, sum(total_laid_off) as t_lf
-from layoffs_staging2
-group by company, year(`date`)
-order by 3 desc
+-- Which company had the biggest layoffs within each year?
+WITH company_years AS (
+    SELECT company, YEAR(`date`) AS years, SUM(total_laid_off) AS t_lf
+    FROM layoffs_staging2
+    GROUP BY company, YEAR(`date`)
+    ORDER BY 3 DESC
 ), 
-company_ranking_years as 
-(select *,
-dense_rank() over (partition by years order by t_lf desc) as ranking 
-from company_years 
-where years is not null)
-select *
-from company_ranking_years
-where ranking <= 5
-;
-
-
-
-
-
-
-
-
-
-
-
-
-
+company_ranking_years AS (
+    SELECT *,
+           DENSE_RANK() OVER (PARTITION BY years ORDER BY t_lf DESC) AS ranking 
+    FROM company_years 
+    WHERE years IS NOT NULL
+)
+SELECT *
+FROM company_ranking_years
+WHERE ranking <= 5;
