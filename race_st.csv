@@ -1,0 +1,110 @@
+Place,First,Last,City,State,Age,Gender,Time,fullname,Total_Minutes,age_group
+1,Daniel,Wilson,Tulsa,OK,35,M,0 days 08:23:01,Daniel Wilson,503,30-39
+2,Eric,Davis,Greenwood,IN,38,M,0 days 08:57:54,Eric Davis,538,30-39
+3,Stewart,Edwards,New Smyrna Beach,FL,43,M,0 days 09:24:35,Stewart Edwards,565,40-49
+4,Ron,Hammett,Montverde,FL,53,M,0 days 09:24:36,Ron Hammett,565,50-59
+5,Seth,Cain,Geneva,FL,44,M,0 days 09:42:17,Seth Cain,582,40-49
+6,Brad,Fetters,Odessa,FL,39,M,0 days 09:48:23,Brad Fetters,588,30-39
+7,David,Booher,Goshen,OH,47,M,0 days 09:52:01,David Booher,592,40-49
+8,Elizabeth,Myers,Sarasota,FL,32,F,0 days 10:04:42,Elizabeth Myers,605,30-39
+9,Andrew,Foerster,York,PA,36,M,0 days 10:07:19,Andrew Foerster,607,30-39
+10,Michael,Stone,Delray Beach,FL,44,M,0 days 10:09:02,Michael Stone,609,40-49
+11,Heidi,Hinnershitz,Seven Devils,NC,30,F,0 days 10:14:28,Heidi Hinnershitz,614,30-39
+12,Chad,Smith,Middletown,NY,40,M,0 days 10:17:20,Chad Smith,617,40-49
+13,Paul,Reynolds,Westbrookville,NY,48,M,0 days 10:17:27,Paul Reynolds,617,40-49
+14,Robb,Young,Marietta,GA,58,M,0 days 10:31:47,Robb Young,632,50-59
+15,Trevor,Foulk,St. John's,FL,46,M,0 days 10:34:48,Trevor Foulk,635,40-49
+16,Daniel,Reilly,Charlotte,NC,34,M,0 days 10:39:48,Daniel Reilly,640,30-39
+17,Julie Rosa,Kenney,Chuluota,FL,49,F,0 days 10:41:57,Julie Rosa Kenney,642,40-49
+18,Jason,Harasimowicz,Batavia,NY,32,M,0 days 10:46:22,Jason Harasimowicz,646,30-39
+19,Johnny,Daniels,Oak Ridge,TN,40,M,0 days 10:47:44,Johnny Daniels,648,40-49
+20,Troy,Tibbetts,Fort Moore,GA,29,M,0 days 10:59:23,Troy Tibbetts,659,<30
+21,Andrew,Graham,Lake Worth,FL,36,M,0 days 11:12:10,Andrew Graham,672,30-39
+22,Jessica,Hardy,El Segundo,CA,41,F,0 days 11:13:28,Jessica Hardy,673,40-49
+23,Brandon,Holmes,Valrico,FL,40,M,0 days 11:16:22,Brandon Holmes,676,40-49
+24,Jeremy,Boz,Las Vegas,NV,41,M,0 days 11:19:53,Jeremy Boz,680,40-49
+25,Darren,Ramdhan,Las Vegas,NV,46,M,0 days 11:20:04,Darren Ramdhan,680,40-49
+26,Matthew,Masson,Merritt Island,FL,36,M,0 days 11:22:27,Matthew Masson,682,30-39
+27,Charlie,Alesi,Kennesaw,GA,40,M,0 days 11:44:57,Charlie Alesi,705,40-49
+28,Lizzy,Fowler,Stuart,FL,27,F,0 days 11:46:34,Lizzy Fowler,707,<30
+29,Clay,Pell,Jacksonville Beach,FL,45,M,0 days 11:49:03,Clay Pell,709,40-49
+30,Arron,Ocheltree,Oviedo,FL,38,M,0 days 11:52:03,Arron Ocheltree,712,30-39
+31,Eric,O'Neil,Chicago,IL,34,M,0 days 11:55:00,Eric O'Neil,715,30-39
+32,Mike,Murchison,Toronto,ON,35,M,0 days 11:55:03,Mike Murchison,715,30-39
+33,Cody,Dolloff,Columbus,GA,27,M,0 days 11:55:07,Cody Dolloff,715,<30
+34,Leanna,Hobson,BALLARD,WV,31,F,0 days 11:59:06,Leanna Hobson,719,30-39
+35,Rigoberto,Barragan,Milton,FL,46,M,0 days 11:59:59,Rigoberto Barragan,720,40-49
+36,Nick,Wishart,PAWTUCKET,RI,54,M,0 days 12:00:02,Nick Wishart,720,50-59
+37,Bill,Sanborn,Milton,FL,48,M,0 days 12:00:08,Bill Sanborn,720,40-49
+38,Tara,Allen,Mount Desert,ME,32,F,0 days 12:11:27,Tara Allen,731,30-39
+39,Chad,Frederick,Hilton Head,SC,48,M,0 days 12:11:30,Chad Frederick,732,40-49
+40,Anna,Foard,Woodstock,GA,45,F,0 days 12:18:02,Anna Foard,738,40-49
+41,Ross,Putman,Dekalb Jct,NY,42,M,0 days 12:18:19,Ross Putman,738,40-49
+42,Jose,Marin,Florida,FL,39,M,0 days 12:27:56,Jose Marin,748,30-39
+43,Alister,Wilson,tampa,FL,31,M,0 days 12:27:58,Alister Wilson,748,30-39
+44,Jeffrey,Torres,Orlando,FL,40,M,0 days 12:31:32,Jeffrey Torres,752,40-49
+45,Chris,Mason,Henrico,VA,45,M,0 days 12:39:13,Chris Mason,759,40-49
+46,Brent,Bowman,Buford,GA,36,M,0 days 12:39:39,Brent Bowman,760,30-39
+47,Drew,Burkhalter,Avondale Estates,GA,37,M,0 days 12:47:10,Drew Burkhalter,767,30-39
+48,Shauna,Banning,Lithia,FL,46,F,0 days 12:54:28,Shauna Banning,774,40-49
+49,George,Blackwood,St. John's,NL,61,M,0 days 12:54:30,George Blackwood,774,60+
+50,Ben,Henderson,Valrico,FL,43,M,0 days 12:55:55,Ben Henderson,776,40-49
+51,Dominick,Gebauer,Ormond Beach,FL,22,M,0 days 12:56:10,Dominick Gebauer,776,<30
+52,Rebecca,Sharp,Knoxville,TN,35,F,0 days 12:56:46,Rebecca Sharp,777,30-39
+53,Tara,Butler,Erie,CO,30,F,0 days 12:57:58,Tara Butler,778,30-39
+54,Hunter,Musgrove,ASHEVILLE,NC,29,M,0 days 12:58:35,Hunter Musgrove,779,<30
+55,Jessika,Poppe,Asheville,NC,33,F,0 days 12:58:41,Jessika Poppe,779,30-39
+56,Robert,Crow,Crawfordville,FL,35,M,0 days 12:59:47,Robert Crow,780,30-39
+57,Todd,Barnett,Longwood,FL,43,M,0 days 12:59:53,Todd Barnett,780,40-49
+58,Andrew,Fortenberry,Jacksonville,FL,42,M,0 days 13:02:29,Andrew Fortenberry,782,40-49
+59,Kyle,Schmidt,Oviedo,FL,34,M,0 days 13:03:21,Kyle Schmidt,783,30-39
+60,Michelle,Goldberg,Meadowbrook,PA,49,F,0 days 13:04:23,Michelle Goldberg,784,40-49
+61,John William,Deaton,Chilhowie,VA,29,M,0 days 13:05:53,John William Deaton,786,<30
+62,Jason,Kring,Oviedo,FL,52,M,0 days 13:07:12,Jason Kring,787,50-59
+63,Alex,Moore,Palm Coast,FL,33,M,0 days 13:08:09,Alex Moore,788,30-39
+64,Boris,Karetny,Palm Coast,FL,38,M,0 days 13:09:55,Boris Karetny,790,30-39
+65,Casey,Burkhalter,Avondale estates,GA,32,F,0 days 13:19:29,Casey Burkhalter,799,30-39
+66,Jason,Finch,Homer,GA,48,M,0 days 13:20:05,Jason Finch,800,40-49
+67,Gregory,Ryan,Orlando,FL,35,M,0 days 13:20:59,Gregory Ryan,801,30-39
+68,Samuel,Dunaway,DeFuniak Springs,FL,36,M,0 days 13:21:07,Samuel Dunaway,801,30-39
+69,Brian,Miller,Palm Bay,FL,41,M,0 days 13:21:55,Brian Miller,802,40-49
+70,Stephanie,Felber,Elgin,IL,60,F,0 days 13:26:11,Stephanie Felber,806,60+
+71,Tony,Hofmann,Overland Park,KS,57,M,0 days 13:26:20,Tony Hofmann,806,50-59
+72,Steven,Stricker,Lady Lake,FL,60,M,0 days 13:26:27,Steven Stricker,806,60+
+73,Darren,Worley,Waterloo,IL,46,M,0 days 13:26:45,Darren Worley,807,40-49
+74,Joshua,Sanders,Fort Benning,GA,31,M,0 days 13:27:37,Joshua Sanders,808,30-39
+75,Matthew,McNeece,Columbus,GA,37,M,0 days 13:27:46,Matthew McNeece,808,30-39
+76,Matt,Steiner,Greece,NY,47,M,0 days 13:28:30,Matt Steiner,808,40-49
+77,Brett,Chapman,Weston,FL,38,M,0 days 13:45:18,Brett Chapman,825,30-39
+78,Zach,Clayton,Weston,FL,38,M,0 days 13:47:19,Zach Clayton,827,30-39
+79,Kyle,Rose,Estero,FL,24,M,0 days 13:48:48,Kyle Rose,829,<30
+80,Becky,Madsen,Las Vegas,NV,39,F,0 days 13:49:04,Becky Madsen,829,30-39
+81,Kirsten,York,Las Vegas,NV,34,F,0 days 13:49:07,Kirsten York,829,30-39
+82,Bailey,Freer,Winter Garden,FL,31,F,0 days 13:49:24,Bailey Freer,829,30-39
+83,Matthew,Holappa,Knoxville,TN,56,M,0 days 13:54:55,Matthew Holappa,835,50-59
+84,Gerhard,Mutz,Atlanta,GA,63,M,0 days 13:55:14,Gerhard Mutz,835,60+
+85,Rusty,Smith,Woodstock,GA,56,M,0 days 13:56:55,Rusty Smith,837,50-59
+86,Jason,Kumlien,Tampa,FL,53,M,0 days 14:01:02,Jason Kumlien,841,50-59
+87,Abraham,Mancino,Bethel,OH,26,M,0 days 14:01:16,Abraham Mancino,841,<30
+88,William,Dozier,Hilliard,FL,51,M,0 days 14:02:44,William Dozier,843,50-59
+89,Mark,Ogrady,Lakeland,FL,45,M,0 days 14:11:54,Mark Ogrady,852,40-49
+90,Julian,Davis,Boynton Beach,FL,35,M,0 days 14:13:42,Julian Davis,854,30-39
+91,Rob,Canfield,Bridgeport,PA,34,M,0 days 14:17:04,Rob Canfield,857,30-39
+92,Ryan,Nolan,Orlando,FL,26,M,0 days 14:26:47,Ryan Nolan,867,<30
+93,Brittany,Sobering,Winter Springs,FL,41,F,0 days 14:29:08,Brittany Sobering,869,40-49
+94,Gordon,Bloom,St Cloud,FL,53,M,0 days 14:29:23,Gordon Bloom,869,50-59
+95,Jen,Maki,Casselberry,FL,41,F,0 days 14:29:30,Jen Maki,870,40-49
+96,Nick,Collins,Plant City,FL,42,M,0 days 14:29:54,Nick Collins,870,40-49
+97,Ryan,Bontrager,Plant City,FL,47,M,0 days 14:29:56,Ryan Bontrager,870,40-49
+98,Brian,Delong,Pace,FL,61,M,0 days 14:35:35,Brian Delong,876,60+
+99,Lena,Cowell,Omaha,NE,31,F,0 days 14:40:05,Lena Cowell,880,30-39
+100,Katherine,Clemente,Orlando,FL,39,F,0 days 14:40:09,Katherine Clemente,880,30-39
+101,Matthew,Damico,VENTNOR CITY,NJ,36,M,0 days 15:00:17,Matthew Damico,900,30-39
+102,Andrew,Rollins,Highland Hgts,OH,55,M,0 days 15:00:28,Andrew Rollins,900,50-59
+103,Paul,Rollins,Oviedo,FL,53,M,0 days 15:00:30,Paul Rollins,900,50-59
+104,Jennifer,Isley,DeBary,FL,51,F,0 days 15:01:15,Jennifer Isley,901,50-59
+105,David,Buning,Winter Park,FL,49,M,0 days 15:03:26,David Buning,903,40-49
+106,Kelly,Stoner Baker,Woodstock,GA,53,F,0 days 15:09:19,Kelly Stoner Baker,909,50-59
+107,Chad,Ward,Woodstock,GA,39,M,0 days 15:10:30,Chad Ward,910,30-39
+108,Dennis,Stadelman,Cicero,NY,62,M,0 days 15:20:26,Dennis Stadelman,920,60+
+109,Jonathan,Burnham,Fort Moore,GA,24,M,0 days 15:40:49,Jonathan Burnham,941,<30
